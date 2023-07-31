@@ -14,9 +14,18 @@ public class Tests {
     }
 
     @Test
+    public void createTableWithPosition() {
+        Table sut = new Table(4, 9);
+
+        Assertions.assertEquals(2, sut.getPositionX());
+        Assertions.assertEquals(7, sut.getPositionY());
+    }
+
+    @Test
     public void createTableWithDirectionNorthAsDefault() {
         Table sut = new Table(4, 9);
 
         Assertions.assertEquals(Direction.NORTH, sut.getDirection());
     }
+
 }

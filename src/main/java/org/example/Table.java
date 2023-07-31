@@ -6,6 +6,10 @@ public class Table {
 
     private Direction direction;
 
+    private int positionX;
+
+    private int positionY;
+
     public Table(int width, int height) {
         this.width = width;
         this.height = height;
@@ -22,5 +26,13 @@ public class Table {
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public int getPositionX() {
+        return positionX;
+    }
+
+    public int getPositionY() {
+        return positionY;
     }
 }
