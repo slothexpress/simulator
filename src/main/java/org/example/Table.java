@@ -10,9 +10,11 @@ public class Table {
 
     private int positionY;
 
-    public Table(int width, int height) {
+    public Table(int width, int height, int positionX, int positionY) {
         this.width = width;
         this.height = height;
+        this.positionX = positionX;
+        this.positionY = positionY;
         this.direction = Direction.NORTH;
     }
 
