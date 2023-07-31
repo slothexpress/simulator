@@ -37,4 +37,8 @@ public class Table {
     public int getPositionY() {
         return positionY;
     }
+
+    public void move(Command command) {
+        
+    }
 }

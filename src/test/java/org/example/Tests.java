@@ -30,4 +30,12 @@ public class Tests {
         Assertions.assertEquals(Direction.NORTH, sut.getDirection());
     }
 
+    @Test
+    public void movePositionForward() {
+        sut.move(Command.FORWARD);
+
+        Assertions.assertEquals(2, sut.getPositionX());
+        Assertions.assertEquals(6, sut.getPositionY());
+    }
+
 }
