@@ -9,6 +9,7 @@ public class Table {
     public Table(int width, int height) {
         this.width = width;
         this.height = height;
+        this.direction = Direction.NORTH;
     }
 
     public int getWidth() {
