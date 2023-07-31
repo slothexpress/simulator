@@ -38,4 +38,13 @@ public class Tests {
         Assertions.assertEquals(6, sut.getPositionY());
     }
 
+    @Test
+    public void movePositionBackward() {
+        sut.move(Command.BACKWARD);
+
+        Assertions.assertEquals(2, sut.getPositionX());
+        Assertions.assertEquals(8, sut.getPositionY());
+    }
+
+
 }
