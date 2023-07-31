@@ -39,6 +39,8 @@ public class Table {
     }
 
     public void move(Command command) {
-        
+        if(direction == Direction.NORTH && command == Command.FORWARD) {
+            positionY = positionY - 1;
+        }
     }
 }
