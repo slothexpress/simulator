@@ -42,5 +42,8 @@ public class Table {
         if(direction == Direction.NORTH && command == Command.FORWARD) {
             positionY = positionY - 1;
         }
+        else if(direction == Direction.NORTH && command == Command.BACKWARD) {
+            positionY = positionY + 1;
+        }
     }
 }
