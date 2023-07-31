@@ -46,5 +46,19 @@ public class Tests {
         Assertions.assertEquals(8, sut.getPositionY());
     }
 
+    @Test
+    public void rotateClockWise() {
+        sut.move(Command.ROTATE_CLOCKWISE);
+
+        Assertions.assertEquals(Direction.EAST, sut.getDirection());
+    }
+
+    @Test
+    public void rotateCounterClockWise() {
+        sut.move(Command.ROTATE_COUNTERCLOCKWISE);
+
+        Assertions.assertEquals(Direction.WEST, sut.getDirection());
+    }
+
 
 }
