@@ -10,6 +10,9 @@ public class Table {
 
     private int positionY;
 
+    private String result;
+
+
     public Table(int width, int height, int positionX, int positionY) {
         this.width = width;
         this.height = height;
@@ -38,23 +41,38 @@ public class Table {
         return positionY;
     }
 
-    public void move(Command command) {
-        switch (direction) {
-            case NORTH:
-                moveFromNorth(command);
-                break;
-            case EAST:
-                moveFromEast(command);
-                break;
-            case WEST:
-                moveFromWest(command);
-                break;
-            case SOUTH:
-                moveFromSouth(command);
-                break;
-            default:
-                break;
+    public String getResult() {
+        return result;
+    }
+
+    public void movePosition(Command command) {
+        if(command == Command.QUIT) {
+            quitAndPrintResult();
         }
+        else
+        {
+            switch (direction) {
+                case NORTH:
+                    moveFromNorth(command);
+                    break;
+                case EAST:
+                    moveFromEast(command);
+                    break;
+                case WEST:
+                    moveFromWest(command);
+                    break;
+                case SOUTH:
+                    moveFromSouth(command);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    private void quitAndPrintResult() {
+        System.out.println("QUIT...");
     }
 
     private void moveFromSouth (Command command){
