@@ -10,7 +10,7 @@ public class Tests {
 
     @BeforeEach
     public void setup() {
-        sut = new Table(4, 9, 2, 7);;
+        sut = new Table(4, 9, 2, 7);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class Tests {
 
     @Test
     public void movePositionForward() {
-        sut.movePosition(Command.FORWARD);
+        sut.moveObject(Command.FORWARD);
 
         Assertions.assertEquals(2, sut.getPositionX());
         Assertions.assertEquals(6, sut.getPositionY());
@@ -40,7 +40,7 @@ public class Tests {
 
     @Test
     public void movePositionBackward() {
-        sut.movePosition(Command.BACKWARD);
+        sut.moveObject(Command.BACKWARD);
 
         Assertions.assertEquals(2, sut.getPositionX());
         Assertions.assertEquals(8, sut.getPositionY());
@@ -48,22 +48,22 @@ public class Tests {
 
     @Test
     public void rotateClockWise() {
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
 
         Assertions.assertEquals(Direction.EAST, sut.getDirection());
     }
 
     @Test
     public void rotateCounterClockWise() {
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
 
         Assertions.assertEquals(Direction.WEST, sut.getDirection());
     }
 
     @Test
     public void rotateClockWiseAndMoveForward() {
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
-        sut.movePosition(Command.FORWARD);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.FORWARD);
 
         Assertions.assertEquals(Direction.EAST, sut.getDirection());
         Assertions.assertEquals(3, sut.getPositionX());
@@ -72,8 +72,8 @@ public class Tests {
 
     @Test
     public void rotateClockWiseAndMoveBackward() {
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
-        sut.movePosition(Command.BACKWARD);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.BACKWARD);
 
         Assertions.assertEquals(Direction.EAST, sut.getDirection());
         Assertions.assertEquals(1, sut.getPositionX());
@@ -82,8 +82,8 @@ public class Tests {
 
     @Test
     public void rotateCounterClockWiseAndMoveForward() {
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
-        sut.movePosition(Command.FORWARD);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.FORWARD);
 
         Assertions.assertEquals(Direction.WEST, sut.getDirection());
         Assertions.assertEquals(1, sut.getPositionX());
@@ -92,8 +92,8 @@ public class Tests {
 
     @Test
     public void rotateCounterClockWiseAndMoveBackward() {
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
-        sut.movePosition(Command.BACKWARD);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.BACKWARD);
 
         Assertions.assertEquals(Direction.WEST, sut.getDirection());
         Assertions.assertEquals(3, sut.getPositionX());
@@ -102,9 +102,9 @@ public class Tests {
 
     @Test
     public void rotateFromNorthToSouthAndMoveForward() {
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
-        sut.movePosition(Command.FORWARD);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.FORWARD);
 
         Assertions.assertEquals(Direction.SOUTH, sut.getDirection());
         Assertions.assertEquals(2, sut.getPositionX());
@@ -113,9 +113,9 @@ public class Tests {
 
     @Test
     public void rotateFromNorthToSouthAndMoveBackward() {
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
-        sut.movePosition(Command.BACKWARD);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.BACKWARD);
 
         Assertions.assertEquals(Direction.SOUTH, sut.getDirection());
         Assertions.assertEquals(2, sut.getPositionX());
@@ -124,22 +124,23 @@ public class Tests {
 
     @Test
     public void failedSimulationOutOfBoundsOnX() {
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
-        sut.movePosition(Command.FORWARD);
-        sut.movePosition(Command.FORWARD);
-        sut.movePosition(Command.QUIT);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.FORWARD);
+        sut.moveObject(Command.FORWARD);
+        sut.moveObject(Command.FORWARD);
+        sut.moveObject(Command.QUIT);
 
-        Assertions.assertSame("[-1,-1]", sut.getResult());
+        Assertions.assertEquals("[-1,-1]", sut.getResult());
     }
 
     @Test
     public void failedSimulationOutOfBoundsOnY() {
-        sut.movePosition(Command.BACKWARD);
-        sut.movePosition(Command.BACKWARD);
-        sut.movePosition(Command.BACKWARD);
-        sut.movePosition(Command.QUIT);
+        sut.moveObject(Command.BACKWARD);
+        sut.moveObject(Command.BACKWARD);
+        sut.moveObject(Command.BACKWARD);
+        sut.moveObject(Command.QUIT);
 
-        Assertions.assertSame("[-1,-1]", sut.getResult());
+        Assertions.assertEquals("[-1,-1]", sut.getResult());
     }
 
     @Test
@@ -148,22 +149,21 @@ public class Tests {
         sut = new Table(4, 4, 2, 2);
 
         // Commands: 1,4,1,3,2,3,2,4,1,0
-        sut.movePosition(Command.FORWARD);
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.FORWARD);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
 
-        sut.movePosition(Command.FORWARD);
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.FORWARD);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
 
-        sut.movePosition(Command.BACKWARD);
-        sut.movePosition(Command.ROTATE_CLOCKWISE);
+        sut.moveObject(Command.BACKWARD);
+        sut.moveObject(Command.ROTATE_CLOCKWISE);
 
-        sut.movePosition(Command.BACKWARD);
-        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.moveObject(Command.BACKWARD);
+        sut.moveObject(Command.ROTATE_COUNTERCLOCKWISE);
 
-        sut.movePosition(Command.FORWARD);
-        sut.movePosition(Command.QUIT);
+        sut.moveObject(Command.FORWARD);
+        sut.moveObject(Command.QUIT);
 
         Assertions.assertEquals("[0,1]", sut.getResult());
     }
-
 }

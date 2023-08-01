@@ -3,15 +3,10 @@ package org.example;
 public class Table {
     private int width;
     private int height;
-
-    private Direction direction;
-
     private int positionX;
-
     private int positionY;
-
+    private Direction direction;
     private String result;
-
 
     public Table(int width, int height, int positionX, int positionY) {
         this.width = width;
@@ -30,10 +25,6 @@ public class Table {
         return height;
     }
 
-    public Direction getDirection() {
-        return direction;
-    }
-
     public int getPositionX() {
         return positionX;
     }
@@ -46,17 +37,19 @@ public class Table {
         return result;
     }
 
-    public void movePosition(int value) {
-        Command command = Command.fromValue(value);
-        movePosition(command);
+    public Direction getDirection() {
+        return direction;
     }
 
-    public void movePosition(Command command) {
+    public void moveObject(int value) {
+        Command command = Command.fromValue(value);
+        moveObject(command);
+    }
+
+    public void moveObject(Command command) {
         if(command == Command.QUIT) {
             quitAndPrintResult();
-        }
-        else
-        {
+        } else {
             switch (direction) {
                 case NORTH:
                     moveFromNorth(command);
@@ -74,15 +67,11 @@ public class Table {
                     break;
             }
         }
-
     }
 
     private void quitAndPrintResult() {
-        if(positionX < 0 || positionY < 0
-                || positionX > width || positionY > height) {
-            System.out.println(result);
-        }
-        else {
+        if(positionX >= 0 && positionY >= 0
+                && positionX <= width && positionY <= height) {
             result = "[" + positionX + "," + positionY + "]";
         }
         System.out.println(result);
@@ -163,6 +152,5 @@ public class Table {
                 break;
         }
     }
-
 }
 
