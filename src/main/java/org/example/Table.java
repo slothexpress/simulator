@@ -39,16 +39,32 @@ public class Table {
     }
 
     public void move(Command command) {
-        if(direction == Direction.NORTH && command == Command.FORWARD) {
-            positionY = positionY - 1;
-        }
-        else if(direction == Direction.NORTH && command == Command.BACKWARD) {
-            positionY = positionY + 1;
-        } else if(direction == Direction.NORTH && command == Command.ROTATE_CLOCKWISE) {
-            direction = Direction.EAST;
-        } else if(direction == Direction.NORTH && command == Command.ROTATE_COUNTERCLOCKWISE) {
-            direction = Direction.WEST;
+        switch (direction) {
+            case NORTH:
+                moveFromNorth(command);
+                break;
+            default:
+                break;
         }
     }
-    
+
+    private void moveFromNorth(Command command) {
+        switch (command) {
+            case FORWARD:
+                positionY = positionY - 1;
+                break;
+            case BACKWARD:
+                positionY = positionY + 1;
+                break;
+            case ROTATE_CLOCKWISE:
+                direction = Direction.EAST;
+                break;
+            case ROTATE_COUNTERCLOCKWISE:
+                direction = Direction.WEST;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
