@@ -73,10 +73,14 @@ public class Table {
     }
 
     private void quitAndPrintResult() {
-        if(positionX < 1 || positionY < 1
+        if(positionX < 0 || positionY < 0
                 || positionX > width || positionY > height) {
             System.out.println(result);
         }
+        else {
+            result = "[" + positionX + "," + positionY + "]";
+        }
+        System.out.println(result);
     }
 
     private void moveFromSouth (Command command){
