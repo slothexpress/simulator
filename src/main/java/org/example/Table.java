@@ -43,12 +43,34 @@ public class Table {
             case NORTH:
                 moveFromNorth(command);
                 break;
+            case EAST:
+                moveFromEast(command);
+                break;
             default:
                 break;
         }
     }
 
-    private void moveFromNorth(Command command) {
+    private void moveFromEast(Command command) {
+        switch (command) {
+            case FORWARD:
+                positionX = positionX + 1;
+                break;
+            case BACKWARD:
+                positionX = positionX - 1;
+                break;
+            case ROTATE_CLOCKWISE:
+                direction = Direction.SOUTH;
+                break;
+            case ROTATE_COUNTERCLOCKWISE:
+                direction = Direction.NORTH;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void moveFromNorth (Command command){
         switch (command) {
             case FORWARD:
                 positionY = positionY - 1;
@@ -68,3 +90,4 @@ public class Table {
     }
 
 }
+
