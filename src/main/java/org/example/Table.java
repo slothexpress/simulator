@@ -19,6 +19,7 @@ public class Table {
         this.positionX = positionX;
         this.positionY = positionY;
         this.direction = Direction.NORTH;
+        this.result = "[-1,-1]";
     }
 
     public int getWidth() {
@@ -72,7 +73,10 @@ public class Table {
     }
 
     private void quitAndPrintResult() {
-        System.out.println("QUIT...");
+        if(positionX < 1 || positionY < 1
+                || positionX > width || positionY > height) {
+            System.out.println(result);
+        }
     }
 
     private void moveFromSouth (Command command){
