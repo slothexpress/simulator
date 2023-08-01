@@ -142,6 +142,28 @@ public class Tests {
         Assertions.assertSame("[-1,-1]", sut.getResult());
     }
 
+    @Test
+    public void successfulSimulationExample() {
+        // This uses the example from the task description on page 3
+        sut = new Table(4, 4, 2, 2);
 
+        // Commands: 1,4,1,3,2,3,2,4,1,0
+        sut.movePosition(Command.FORWARD);
+        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
+
+        sut.movePosition(Command.FORWARD);
+        sut.movePosition(Command.ROTATE_CLOCKWISE);
+
+        sut.movePosition(Command.BACKWARD);
+        sut.movePosition(Command.ROTATE_CLOCKWISE);
+
+        sut.movePosition(Command.BACKWARD);
+        sut.movePosition(Command.ROTATE_COUNTERCLOCKWISE);
+
+        sut.movePosition(Command.FORWARD);
+        sut.movePosition(Command.QUIT);
+
+        Assertions.assertEquals("[0,1]", sut.getResult());
+    }
 
 }
