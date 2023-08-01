@@ -44,6 +44,11 @@ public class Table {
         }
         else if(direction == Direction.NORTH && command == Command.BACKWARD) {
             positionY = positionY + 1;
+        } else if(direction == Direction.NORTH && command == Command.ROTATE_CLOCKWISE) {
+            direction = Direction.EAST;
+        } else if(direction == Direction.NORTH && command == Command.ROTATE_COUNTERCLOCKWISE) {
+            direction = Direction.WEST;
         }
     }
+    
 }
