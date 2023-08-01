@@ -99,4 +99,26 @@ public class Tests {
         Assertions.assertEquals(3, sut.getPositionX());
         Assertions.assertEquals(7, sut.getPositionY());
     }
+
+    @Test
+    public void rotateFromNorthToSouthAndMoveForward() {
+        sut.move(Command.ROTATE_CLOCKWISE);
+        sut.move(Command.ROTATE_CLOCKWISE);
+
+        Assertions.assertEquals(Direction.SOUTH, sut.getDirection());
+        Assertions.assertEquals(2, sut.getPositionX());
+        Assertions.assertEquals(8, sut.getPositionY());
+    }
+
+    @Test
+    public void rotateFromNorthToSouthAndMoveBackward() {
+        sut.move(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.move(Command.ROTATE_COUNTERCLOCKWISE);
+
+        Assertions.assertEquals(Direction.SOUTH, sut.getDirection());
+        Assertions.assertEquals(2, sut.getPositionX());
+        Assertions.assertEquals(6, sut.getPositionY());
+    }
+
+
 }
