@@ -46,6 +46,11 @@ public class Table {
         return result;
     }
 
+    public void movePosition(int value) {
+        Command command = Command.fromValue(value);
+        movePosition(command);
+    }
+
     public void movePosition(Command command) {
         if(command == Command.QUIT) {
             quitAndPrintResult();

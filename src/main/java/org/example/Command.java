@@ -13,4 +13,12 @@ public enum Command {
         this.value = value;
     }
 
+    public static Command fromValue(int value) {
+        for (Command command : Command.values()) {
+            if (command.value == value) {
+                return command;
+            }
+        }
+        throw new IllegalArgumentException("Invalid Command: " + value);
+    }
 }
