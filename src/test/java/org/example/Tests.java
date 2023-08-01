@@ -60,5 +60,23 @@ public class Tests {
         Assertions.assertEquals(Direction.WEST, sut.getDirection());
     }
 
+    @Test
+    public void rotateClockWiseAndMoveForward() {
+        sut.move(Command.ROTATE_CLOCKWISE);
+        sut.move(Command.FORWARD);
 
+        Assertions.assertEquals(Direction.EAST, sut.getDirection());
+        Assertions.assertEquals(3, sut.getPositionX());
+        Assertions.assertEquals(7, sut.getPositionY());
+    }
+
+    @Test
+    public void rotateClockWiseAndMoveBackward() {
+        sut.move(Command.ROTATE_CLOCKWISE);
+        sut.move(Command.BACKWARD);
+
+        Assertions.assertEquals(Direction.EAST, sut.getDirection());
+        Assertions.assertEquals(1, sut.getPositionX());
+        Assertions.assertEquals(7, sut.getPositionY());
+    }
 }
