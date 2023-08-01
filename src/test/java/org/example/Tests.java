@@ -104,6 +104,7 @@ public class Tests {
     public void rotateFromNorthToSouthAndMoveForward() {
         sut.move(Command.ROTATE_CLOCKWISE);
         sut.move(Command.ROTATE_CLOCKWISE);
+        sut.move(Command.FORWARD);
 
         Assertions.assertEquals(Direction.SOUTH, sut.getDirection());
         Assertions.assertEquals(2, sut.getPositionX());
@@ -114,6 +115,7 @@ public class Tests {
     public void rotateFromNorthToSouthAndMoveBackward() {
         sut.move(Command.ROTATE_COUNTERCLOCKWISE);
         sut.move(Command.ROTATE_COUNTERCLOCKWISE);
+        sut.move(Command.BACKWARD);
 
         Assertions.assertEquals(Direction.SOUTH, sut.getDirection());
         Assertions.assertEquals(2, sut.getPositionX());
